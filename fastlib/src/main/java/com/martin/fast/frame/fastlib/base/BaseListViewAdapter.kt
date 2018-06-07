@@ -13,11 +13,8 @@ import kotlin.properties.Delegates
  */
 abstract class BaseListViewAdapter<T>(var context: Context, var data: ArrayList<T> = ArrayList()) : BaseAdapter() {
 
-    var inflater: LayoutInflater by Delegates.notNull()
+    var inflater: LayoutInflater = LayoutInflater.from(context)
 
-    init {
-        inflater = LayoutInflater.from(context)
-    }
 
     /**
      * 刷新数据
@@ -50,9 +47,7 @@ abstract class BaseListViewAdapter<T>(var context: Context, var data: ArrayList<
         }
     }
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    abstract override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View
 
     override fun getItem(position: Int): T = data.get(position)
 

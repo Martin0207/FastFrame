@@ -7,7 +7,9 @@ import kotlin.properties.Delegates
  * @author ：Martin
  * @date : 2018/6/6 20:24
  */
- object FastLib {
+object FastLib {
+
+    val DEBUG = true
 
     var context: Context by Delegates.notNull()
         private set

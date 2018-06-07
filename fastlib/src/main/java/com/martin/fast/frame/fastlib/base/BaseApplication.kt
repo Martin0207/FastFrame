@@ -6,6 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.martin.fast.frame.fastlib.FastLib
 import com.martin.fast.frame.fastlib.contract.impl.ActivityLifecycleCallbackImpl
 import com.martin.fast.frame.fastlib.contract.impl.LogAdapterImpl
+import com.martin.fast.frame.fastlib.util.ToastUtil
 import com.orhanobut.logger.Logger
 import org.greenrobot.eventbus.EventBus
 
@@ -26,11 +27,15 @@ abstract class BaseApplication : Application() {
         super.onCreate()
         //日志工具初始化
         Logger.addLogAdapter(LogAdapterImpl())
+        if (FastLib.DEBUG) {
+            // 这两行必须写在init之前，否则这些配置在init过程中将无效
+            ARouter.openLog()     // 打印日志
+            ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
         //路由器初始化
         ARouter.init(this)
         //快速开发工具初始化
         FastLib.init(this)
     }
-
 
 }
