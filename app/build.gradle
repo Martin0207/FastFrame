@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+//当使用kotlin来实现Dagger时, 需要以下配置
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    generateStubs = true
+
+    arguments {
+        arg("moduleName", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.martin.fast.frame.fastframe"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //使用DataBinding
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation project(':fastlib')
+
+    //dagger 编译引用 , 每个component都需要引用
+    kapt 'com.google.dagger:dagger-compiler:2.15'
+    kapt 'com.alibaba:arouter-compiler:1.1.4'
+}

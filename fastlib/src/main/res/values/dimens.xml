@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 遵循Material Design 间距以8dp为基数, 倍数增长-->
+    <dimen name="dis_1">8dp</dimen>
+    <dimen name="dis_2">16dp</dimen>
+    <dimen name="dis_3">24dp</dimen>
+    <dimen name="dis_4">32dp</dimen>
+    <dimen name="dis_5">40dp</dimen>
+    <dimen name="dis_6">48dp</dimen>
+    <dimen name="dis_7">56dp</dimen>
+    <dimen name="dis_8">64dp</dimen>
+    <dimen name="dis_9">72dp</dimen>
+    <dimen name="dis_10">80dp</dimen>
+    <dimen name="dis_11">88dp</dimen>
+    <dimen name="dis_12">96dp</dimen>
+    <dimen name="dis_13">104dp</dimen>
+    <dimen name="dis_14">112dp</dimen>
+    <dimen name="dis_15">120dp</dimen>
+    <dimen name="dis_16">128dp</dimen>
+    <dimen name="dis_17">136dp</dimen>
+    <dimen name="dis_18">144dp</dimen>
+    <dimen name="dis_19">152dp</dimen>
+    <dimen name="dis_20">160dp</dimen>
+    <dimen name="dis_21">168dp</dimen>
+    <dimen name="dis_22">176dp</dimen>
+    <dimen name="dis_23">184dp</dimen>
+    <dimen name="dis_24">192dp</dimen>
+    <dimen name="dis_25">200dp</dimen>
+
+    <!-- 状态栏高度 -->
+    <dimen name="status_bar">@dimen/dis_3</dimen>
+    <!-- 简单Item的内容高度,此item内容仅有简单的至多2行Text-->
+    <dimen name="simple_item_content">@dimen/dis_9</dimen>
+    <!-- item 的标题高度 , 通用-->
+    <dimen name="item_title">@dimen/dis_6</dimen>
+    <!-- 界面左右间隔 -->
+    <dimen name="margin_left_right">@dimen/dis_2</dimen>
+    <!-- 分割线 , 小 -->
+    <dimen name="divide_small">1dp</dimen>
+    <!-- 分割线 , 最小 -->
+    <dimen name="divide_little">0.5dp</dimen>
+    <!-- 分割线 , 普通 -->
+    <dimen name="divide_normal">@dimen/dis_1</dimen>
+    <!-- 分割线 , 大-->
+    <dimen name="divide_big">@dimen/dis_2</dimen>
+
+    <!-- 字体大小 , 从大到小-->
+    <dimen name="text_display_2">45sp</dimen>
+    <dimen name="text_display_1">34sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+    <dimen name="text_subhead_2">16sp</dimen>
+    <dimen name="text_subhead_1">15sp</dimen>
+    <dimen name="text_body_2">14sp</dimen>
+    <dimen name="text_body_1">13sp</dimen>
+
+</resources>
