@@ -1,7 +1,9 @@
 package com.martin.fast.frame.fastlib.base
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import com.martin.fast.frame.fastlib.contract.interfacies.IActivity
+import com.orhanobut.logger.Logger
 import com.trello.rxlifecycle2.android.ActivityEvent
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import io.reactivex.subjects.BehaviorSubject
@@ -18,10 +20,20 @@ abstract class BaseActivity : RxAppCompatActivity(), IActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes())
+        Logger.e("the opening activity is " + this::class.java.simpleName)
+
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
         initData(savedInstanceState)
+    }
+
+    override fun onResume() {
+        //设置为竖屏
+        if (requestedOrientation != ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        super.onResume()
     }
 
     override fun onDestroy() {

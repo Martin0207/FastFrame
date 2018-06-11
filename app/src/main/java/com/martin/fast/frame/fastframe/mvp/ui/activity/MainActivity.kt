@@ -1,11 +1,11 @@
-package com.martin.fast.frame.fastframe
+package com.martin.fast.frame.fastframe.mvp.ui.activity
 
 import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
+import com.martin.fast.frame.fastframe.R
 import com.martin.fast.frame.fastframe.dagger.component.DaggerMainComponent
 import com.martin.fast.frame.fastframe.entity.UserEntity
 import com.martin.fast.frame.fastlib.base.BaseActivity
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 

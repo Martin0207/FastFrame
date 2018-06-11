@@ -29,7 +29,6 @@ object AppUtil {
         }
     }
 
-
     /**
      * 退出程序
      */

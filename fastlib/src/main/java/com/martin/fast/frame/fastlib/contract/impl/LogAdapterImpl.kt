@@ -16,7 +16,7 @@ class LogAdapterImpl : AndroidLogAdapter() {
      * 其他情况下 , 仅Debug版打印日志
      */
     override fun isLoggable(priority: Int, tag: String?): Boolean {
-        return if (tag?.equals("release")!!) true else FastLib.DEBUG
+        return if (tag?.equals("release") == true) true else FastLib.DEBUG
     }
 
 }

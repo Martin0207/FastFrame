@@ -1,5 +1,7 @@
 package com.martin.fast.frame.fastlib.util
 
+import android.app.Activity
+import android.support.v4.app.Fragment
 import com.martin.fast.frame.fastlib.contract.interfacies.IActivity
 import com.martin.fast.frame.fastlib.contract.interfacies.IFragment
 import com.martin.fast.frame.fastlib.contract.interfacies.IRxLifecycleAble
@@ -60,11 +62,27 @@ object RxLifecycleUtil {
      *
      *  如上所示 , 注册所在生命周期不同 , 默认结束生命周期也不同
      */
-    fun <T> bindToLifecycle(rxLifecycleAble: IRxLifecycleAble<T>): LifecycleTransformer<T> {
+    fun <T> bindToLifecycle(rxLifecycleAble: IView): LifecycleTransformer<T> {
         if (rxLifecycleAble is IActivity) {
             return RxLifecycleAndroid.bindActivity((rxLifecycleAble as IActivity).getBehaviorSubject())
         } else if (rxLifecycleAble is IFragment) {
             return RxLifecycleAndroid.bindFragment((rxLifecycleAble as IFragment).getBehaviorSubject())
+        } else {
+            throw NullPointerException("要使用该方法,需要实现IActivity或继承BaseActivity")
+        }
+    }
+
+    fun <T> bindToLifecycle(activity: Activity): LifecycleTransformer<T> {
+        if (activity is IActivity) {
+            return RxLifecycleAndroid.bindActivity((activity as IActivity).getBehaviorSubject())
+        } else {
+            throw NullPointerException("要使用该方法,需要实现IFragment.或继承BaseFragment")
+        }
+    }
+
+    fun <T> bindToLifecycle(fragment: Fragment): LifecycleTransformer<T> {
+        if (fragment is IFragment) {
+            return RxLifecycleAndroid.bindFragment((fragment as IFragment).getBehaviorSubject())
         } else {
             throw NullPointerException("要使用该方法,需要实现IActivity或IFragment.或继承BaseActivity与BaseFragment")
         }

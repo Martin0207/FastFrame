@@ -34,17 +34,15 @@ android {
         }
     }
 
-    //使用DataBinding
-    dataBinding {
-        enabled = true
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-
     implementation project(':fastlib')
-
     //dagger 编译引用 , 每个component都需要引用
     kapt 'com.google.dagger:dagger-compiler:2.15'
     kapt 'com.alibaba:arouter-compiler:1.1.4'

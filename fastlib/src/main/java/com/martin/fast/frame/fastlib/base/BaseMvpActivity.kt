@@ -24,7 +24,7 @@ abstract class BaseMvpActivity<P : IPresenter> : BaseActivity(), IMvpActivity {
 
     override fun onDestroy() {
         super.onDestroy()
-
+        presenter?.onDestroy()
         presenter = null
     }
 

@@ -4,9 +4,12 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import android.util.Log
+import com.martin.fast.frame.fastlib.R
 import com.martin.fast.frame.fastlib.contract.interfacies.IActivity
 import com.martin.fast.frame.fastlib.contract.interfacies.IRxLifecycleAble
 import com.martin.fast.frame.fastlib.util.AppUtil
+import com.qmuiteam.qmui.widget.QMUITopBar
 import com.trello.rxlifecycle2.android.ActivityEvent
 import io.reactivex.subjects.BehaviorSubject
 
@@ -17,12 +20,14 @@ import io.reactivex.subjects.BehaviorSubject
  */
 class ActivityLifecycleCallbackImpl : Application.ActivityLifecycleCallbacks {
 
+
     override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
         activity?.getBehaviorSubject()?.onNext(ActivityEvent.CREATE)
         activity?.let {
             AppUtil.addActivity(activity)
         }
         registerFragmentLifecycleCallback(activity)
+        Log.e("","")
     }
 
     override fun onActivityStarted(activity: Activity?) {
@@ -31,6 +36,15 @@ class ActivityLifecycleCallbackImpl : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityResumed(activity: Activity?) {
         activity?.getBehaviorSubject()?.onNext(ActivityEvent.RESUME)
+        /*
+            全局设置TopBar属性
+            因为initData在onCreate中执行,则如果设置界面title , 在initData中使用setTitle方法即可
+         */
+        var qmuiTopBar = activity?.findViewById<QMUITopBar>(R.id.tb)
+        qmuiTopBar?.setTitle(activity?.title.toString())
+        qmuiTopBar?.addLeftBackImageButton()?.setOnClickListener({
+            activity?.finish()
+        })
     }
 
     override fun onActivityPaused(activity: Activity?) {
@@ -61,7 +75,6 @@ class ActivityLifecycleCallbackImpl : Application.ActivityLifecycleCallbacks {
             (activity as FragmentActivity).supportFragmentManager.registerFragmentLifecycleCallbacks(FragmentLifecycleCallBackImpl(), true)
         }
     }
-
 
     /**
      * 根据Activity的实现结构,来获取BehaviorSubject , 以非侵入的方式实现RxJava的管理

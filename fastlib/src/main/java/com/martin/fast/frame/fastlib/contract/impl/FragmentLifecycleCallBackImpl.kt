@@ -1,11 +1,14 @@
 package com.martin.fast.frame.fastlib.contract.impl
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.util.Log
 import android.view.View
 import com.martin.fast.frame.fastlib.contract.interfacies.IRxLifecycleAble
+import com.orhanobut.logger.Logger
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.subjects.BehaviorSubject
 
@@ -25,13 +28,11 @@ class FragmentLifecycleCallBackImpl : FragmentManager.FragmentLifecycleCallbacks
     override fun onFragmentCreated(fm: FragmentManager?, f: Fragment?, savedInstanceState: Bundle?) {
         super.onFragmentCreated(fm, f, savedInstanceState)
         f?.getBehaviorSubject()?.onNext(FragmentEvent.CREATE)
-
     }
 
     override fun onFragmentViewCreated(fm: FragmentManager?, f: Fragment?, v: View?, savedInstanceState: Bundle?) {
         super.onFragmentViewCreated(fm, f, v, savedInstanceState)
         f?.getBehaviorSubject()?.onNext(FragmentEvent.CREATE_VIEW)
-
     }
 
     override fun onFragmentStarted(fm: FragmentManager?, f: Fragment?) {

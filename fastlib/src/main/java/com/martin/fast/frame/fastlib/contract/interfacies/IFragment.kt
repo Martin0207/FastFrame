@@ -22,5 +22,4 @@ interface IFragment : IRxLifecycleAble<FragmentEvent> {
      */
     fun initData(saveInstanceState: Bundle?)
 
-
 }

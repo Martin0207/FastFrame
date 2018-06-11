@@ -2,17 +2,12 @@ package com.martin.fast.frame.fastlib.contract.interfacies
 
 /**
  * @author ：Martin
- * @date : 2018/6/7 18:32
+ * @date : 2018/6/8 9:39
  */
-interface IPresenter {
+interface IModel {
 
     /**
-     * 初始化资源
-     */
-    fun onCreate()
-
-    /**
-     * 释放资源
+     * 用来释放资源
      */
     fun onDestroy()
 

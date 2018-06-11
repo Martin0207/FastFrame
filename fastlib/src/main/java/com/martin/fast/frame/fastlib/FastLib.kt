@@ -9,7 +9,7 @@ import kotlin.properties.Delegates
  */
 object FastLib {
 
-    val DEBUG = true
+    var DEBUG = true
 
     var context: Context by Delegates.notNull()
         private set
