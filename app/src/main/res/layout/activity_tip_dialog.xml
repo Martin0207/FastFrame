@@ -5,24 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.ARouterActivity">
+    tools:context=".ui.activity.TipDialogActivity">
+
+    <include layout="@layout/include_top_bar" />
 
     <Button
-        android:id="@+id/btn_router"
+        android:id="@+id/btn_loading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ARouter Test" />
+        android:text="loading" />
 
     <Button
-        android:id="@+id/btn_dialog"
+        android:id="@+id/btn_success"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dialog" />
+        android:text="success" />
 
     <Button
-        android:id="@+id/btn_tip_dialog"
+        android:id="@+id/btn_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="tip dialog" />
+        android:text="error" />
+
+    <Button
+        android:id="@+id/btn_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="tip" />
 
 </LinearLayout>

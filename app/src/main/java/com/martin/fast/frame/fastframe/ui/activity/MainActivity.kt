@@ -1,4 +1,4 @@
-package com.martin.fast.frame.fastframe.mvp.ui.activity
+package com.martin.fast.frame.fastframe.ui.activity
 
 import android.os.Bundle
 import com.alibaba.android.arouter.launcher.ARouter
@@ -16,17 +16,25 @@ class MainActivity : BaseActivity() {
 
     override fun layoutRes(): Int = R.layout.activity_main
 
-    override fun initData(saveInstanceState: Bundle?) {
+    override fun init(saveInstanceState: Bundle?) {
 
         DaggerMainComponent.builder()
                 .build()
                 .inject(this)
 
-        btn_router.setOnClickListener({
+        btn_router.setOnClickListener {
             ARouter.getInstance()
                     .build("/main/ARouterActivity")
                     .navigation()
-        })
+        }
+
+        btn_dialog.setOnClickListener {
+            DialogUseActivity.start(getActivity())
+        }
+
+        btn_tip_dialog.setOnClickListener {
+            TipDialogActivity.start(getActivity())
+        }
     }
 
 

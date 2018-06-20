@@ -25,7 +25,7 @@ abstract class BaseActivity : RxAppCompatActivity(), IActivity {
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
-        initData(savedInstanceState)
+        init(savedInstanceState)
     }
 
     override fun onResume() {

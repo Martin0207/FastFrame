@@ -20,31 +20,32 @@ import io.reactivex.subjects.BehaviorSubject
  */
 class ActivityLifecycleCallbackImpl : Application.ActivityLifecycleCallbacks {
 
-
     override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
         activity?.getBehaviorSubject()?.onNext(ActivityEvent.CREATE)
         activity?.let {
             AppUtil.addActivity(activity)
         }
         registerFragmentLifecycleCallback(activity)
-        Log.e("","")
     }
 
     override fun onActivityStarted(activity: Activity?) {
         activity?.getBehaviorSubject()?.onNext(ActivityEvent.START)
+        /*
+         全局设置TopBar属性
+         因为initData在onCreate中执行,则如果设置界面title , 在initData中使用setTitle方法即可
+       */
+        val qmuiTopBar = activity?.findViewById<QMUITopBar>(R.id.tb)
+        qmuiTopBar?.setTitle(activity.title.toString())
+        qmuiTopBar?.removeAllLeftViews()
+        qmuiTopBar?.addLeftBackImageButton()
+        qmuiTopBar?.addLeftBackImageButton()?.setOnClickListener({
+            activity.finish()
+        })
     }
 
     override fun onActivityResumed(activity: Activity?) {
         activity?.getBehaviorSubject()?.onNext(ActivityEvent.RESUME)
-        /*
-            全局设置TopBar属性
-            因为initData在onCreate中执行,则如果设置界面title , 在initData中使用setTitle方法即可
-         */
-        var qmuiTopBar = activity?.findViewById<QMUITopBar>(R.id.tb)
-        qmuiTopBar?.setTitle(activity?.title.toString())
-        qmuiTopBar?.addLeftBackImageButton()?.setOnClickListener({
-            activity?.finish()
-        })
+
     }
 
     override fun onActivityPaused(activity: Activity?) {

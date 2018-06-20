@@ -1,6 +1,6 @@
 package com.martin.fast.frame.fastframe.dagger.component
 
-import com.martin.fast.frame.fastframe.mvp.ui.activity.MainActivity
+import com.martin.fast.frame.fastframe.ui.activity.MainActivity
 
 import dagger.Component
 

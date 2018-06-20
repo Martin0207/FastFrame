@@ -1,4 +1,4 @@
-package com.martin.fast.frame.fastframe.mvp.ui.fragment
+package com.martin.fast.frame.fastframe.ui.fragment
 
 import android.app.Dialog
 import android.os.Bundle
@@ -19,7 +19,7 @@ class TestFragment : BaseFragment() {
 
     override fun initData(saveInstanceState: Bundle?) {
         tv.setOnClickListener({
-            DialogUtil.checkboxDialog(
+            DialogUtil.showCheckboxDialog(
                     activity,
                     "test",
                     "msg",

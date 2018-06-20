@@ -19,7 +19,7 @@ interface IActivity : IRxLifecycleAble<ActivityEvent> {
     /**
      * 初始化数据
      */
-    fun initData(saveInstanceState: Bundle?)
+    fun init(saveInstanceState: Bundle?)
 
     /**
      * 是否含有Fragment,默认false

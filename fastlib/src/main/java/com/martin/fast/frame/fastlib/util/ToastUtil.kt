@@ -12,7 +12,7 @@ import io.reactivex.functions.Consumer
  */
 object ToastUtil {
 
-    private val toast: Toast = Toast.makeText(FastLib.context.getApplicationContext(), "", Toast.LENGTH_SHORT)
+    private val toast: Toast = Toast.makeText(FastLib.context.applicationContext, "", Toast.LENGTH_SHORT)
 
     /**
      * 全局Toast , 优化Toast循环弹出问题
@@ -22,11 +22,12 @@ object ToastUtil {
         toast.duration = duration
         Observable.just(msg)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
+                .subscribe {
                     toast.apply {
                         this.duration = duration
+                        this.setText(it)
                     }.show()
-                })
+                }
     }
 
 }
