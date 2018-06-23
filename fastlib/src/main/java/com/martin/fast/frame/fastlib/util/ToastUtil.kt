@@ -19,12 +19,22 @@ object ToastUtil {
      * 默认显示时间为Toast.LENGTH_SHORT
      */
     fun show(msg: String, duration: Int = Toast.LENGTH_SHORT) {
-        toast.duration = duration
+        toast.duration =duration
         Observable.just(msg)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     toast.apply {
-                        this.duration = duration
+                        this.setText(it)
+                    }.show()
+                }
+    }
+
+    fun show(msgId: Int, duration: Int = Toast.LENGTH_SHORT) {
+        toast.duration = duration
+        Observable.just(FastLib.context.resources.getString(msgId))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    toast.apply {
                         this.setText(it)
                     }.show()
                 }

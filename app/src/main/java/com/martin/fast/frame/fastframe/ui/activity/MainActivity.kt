@@ -35,6 +35,10 @@ class MainActivity : BaseActivity() {
         btn_tip_dialog.setOnClickListener {
             TipDialogActivity.start(getActivity())
         }
+
+        btn_retrofit.setOnClickListener {
+            RetrofitActivity.start(getActivity())
+        }
     }
 
 

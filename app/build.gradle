@@ -45,6 +45,7 @@ dependencies {
     implementation project(':fastlib')
     //dagger 编译引用 , 每个component都需要引用
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
     kapt 'com.google.dagger:dagger-compiler:2.15'
     kapt 'com.alibaba:arouter-compiler:1.1.4'
 }

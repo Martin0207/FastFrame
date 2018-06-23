@@ -54,4 +54,6 @@
     <dimen name="text_body_2">14sp</dimen>
     <dimen name="text_body_1">13sp</dimen>
 
+    <dimen name="grid_expected_size">120dp</dimen>
+
 </resources>

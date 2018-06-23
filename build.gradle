@@ -1,7 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.50'
     repositories {
         google()
         jcenter()
@@ -27,7 +28,7 @@ allprojects {
         project.configurations.all {
             resolutionStrategy.eachDependency { details ->
                 if (details.requested.group == 'com.android.support'
-                        && !details.requested.name.contains('multidex') ) {
+                        && !details.requested.name.contains('multidex')) {
                     details.useVersion "27.1.1"
                 }
             }

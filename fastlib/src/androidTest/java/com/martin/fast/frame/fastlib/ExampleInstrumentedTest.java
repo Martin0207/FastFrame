@@ -7,6 +7,13 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
+import io.reactivex.functions.BiConsumer;
+
 import static org.junit.Assert.*;
 
 /**
@@ -23,4 +30,10 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.martin.fast.frame.fastlib.test", appContext.getPackageName());
     }
+
+    @Test
+    public void testList(){
+
+    }
+
 }

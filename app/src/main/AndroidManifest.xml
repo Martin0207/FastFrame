@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.martin.fast.frame.fastframe">
 
-    <uses-permission android:name="android.permission.CAMERA" />
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -21,7 +19,8 @@
         </activity>
         <activity android:name=".ui.activity.ARouterActivity" />
         <activity android:name=".ui.activity.DialogUseActivity" />
-        <activity android:name=".ui.activity.TipDialogActivity"></activity>
+        <activity android:name=".ui.activity.TipDialogActivity" />
+        <activity android:name=".ui.activity.RetrofitActivity"></activity>
     </application>
 
 </manifest>
