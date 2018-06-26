@@ -1,10 +1,10 @@
-package com.martin.fast.frame.fastlib.model
+package com.martin.fast.frame.fastlib.entity
 
 /**
  * 作者：Martin on 2017/12/6 21:37
  * 邮箱：martin0207mfh@163.com
  */
-class UploadModel {
+class UploadEntity {
 
     /**
      * ossUrl : https://static.zhiyundaohe.com/b15e6b9e44d41b00c05a235bd4a258a3.png

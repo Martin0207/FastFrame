@@ -1,7 +1,6 @@
 package com.martin.fast.frame.fastframe.ui.activity
 
 import android.app.Activity
-import android.app.DownloadManager
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -9,13 +8,17 @@ import com.martin.fast.frame.fastframe.R
 import com.martin.fast.frame.fastframe.ui.adapter.RetrofitPhotoRvAdapter
 import com.martin.fast.frame.fastlib.base.BaseActivity
 import com.martin.fast.frame.fastlib.base.BaseResponse
-import com.martin.fast.frame.fastlib.model.UploadModel
+import com.martin.fast.frame.fastlib.contract.interfacies.OnClickOfPositionListener
+import com.martin.fast.frame.fastlib.entity.ShowImageEntity
+import com.martin.fast.frame.fastlib.entity.UploadEntity
 import com.martin.fast.frame.fastlib.retrofit.DefaultObserver
+import com.martin.fast.frame.fastlib.ui.activity.ShowImageActivity
 import com.martin.fast.frame.fastlib.util.DownloadUtil
 import com.martin.fast.frame.fastlib.util.PhotoUtil
 import com.martin.fast.frame.fastlib.util.UploadUtil
-import com.orhanobut.logger.Logger
 import com.zhihu.matisse.Matisse
+import io.reactivex.Observable
+import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_retrofit.*
 import me.jessyan.progressmanager.ProgressListener
 import me.jessyan.progressmanager.ProgressManager
@@ -53,13 +56,8 @@ class RetrofitActivity : BaseActivity() {
 
         btn_upload.setOnClickListener {
             UploadUtil.uploadFiles(adapter.data, getActivity())
-                    .subscribe(object : DefaultObserver<BaseResponse<ArrayList<UploadModel>>>(getActivity()) {
-                        override fun onSuccess(response: BaseResponse<ArrayList<UploadModel>>) {
-                            response
-                        }
-
-                        override fun onFail(response: BaseResponse<ArrayList<UploadModel>>) {
-                            super.onFail(response)
+                    .subscribe(object : DefaultObserver<BaseResponse<ArrayList<UploadEntity>>>(getActivity()) {
+                        override fun onSuccess(response: BaseResponse<ArrayList<UploadEntity>>) {
                         }
                     })
         }
@@ -73,16 +71,30 @@ class RetrofitActivity : BaseActivity() {
         }
 
         ProgressManager.getInstance().addResponseListener(fileUrl, object : ProgressListener {
+            override fun onError(id: Long, e: Exception?) {
+
+            }
+
             override fun onProgress(progressInfo: ProgressInfo?) {
                 pb.progress = (progressInfo!!.currentbytes * 100 / progressInfo.contentLength).toInt()
                 Timber.e("current progress is ${pb.progress}")
             }
-
-            override fun onError(id: Long, e: Exception?) {
-                Logger.e("id is $id ; exception msg is ${e?.message}")
-            }
-
         })
+
+        adapter.onClickOfPositionListener = object : OnClickOfPositionListener {
+            override fun onClick(position: Int) {
+                Observable.fromIterable(adapter.data)
+                        .map { ShowImageEntity(it) }
+                        .collect({
+                            ArrayList<ShowImageEntity>()
+                        }) { list, entity ->
+                            list.add(entity)
+                        }
+                        .subscribe(Consumer {
+                            ShowImageActivity.start(getContext(), it, position)
+                        })
+            }
+        }
 
     }
 

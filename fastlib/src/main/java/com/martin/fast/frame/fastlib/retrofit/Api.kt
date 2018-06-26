@@ -1,10 +1,8 @@
 package com.martin.fast.frame.fastlib.retrofit
 
 import com.martin.fast.frame.fastlib.base.BaseResponse
-import com.martin.fast.frame.fastlib.model.UploadModel
+import com.martin.fast.frame.fastlib.entity.UploadEntity
 import io.reactivex.Observable
-import io.reactivex.SingleObserver
-import io.reactivex.SingleSource
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -36,11 +34,11 @@ interface Api {
      */
     @Multipart
     @POST("api/upload/android")
-    fun uploadFile(@Part("file") file: @JvmSuppressWildcards RequestBody): Observable<BaseResponse<ArrayList<UploadModel>>>
+    fun uploadFile(@Part("file") file: @JvmSuppressWildcards RequestBody): Observable<BaseResponse<ArrayList<UploadEntity>>>
 
     @Multipart
     @POST("api/upload/android")
-    fun uploadFile(@Part file: MultipartBody.Part): Observable<BaseResponse<ArrayList<UploadModel>>>
+    fun uploadFile(@Part file: MultipartBody.Part): Observable<BaseResponse<ArrayList<UploadEntity>>>
 
     /**
      * 上传多个文件
@@ -48,7 +46,7 @@ interface Api {
     @Multipart
     @POST("api/upload/android")
     fun uploadFiles(@PartMap maps: Map<String, @JvmSuppressWildcards RequestBody>)
-            : @JvmSuppressWildcards Observable<BaseResponse<ArrayList<UploadModel>>>
+            : @JvmSuppressWildcards Observable<BaseResponse<ArrayList<UploadEntity>>>
 
 
 }

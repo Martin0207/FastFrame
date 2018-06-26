@@ -68,7 +68,7 @@ object RxLifecycleUtil {
         } else if (rxLifecycleAble is IFragment) {
             return RxLifecycleAndroid.bindFragment((rxLifecycleAble as IFragment).getBehaviorSubject())
         } else {
-            throw NullPointerException("要使用该方法,需要实现IActivity或继承BaseActivity")
+            throw NullPointerException("要使用该方法,需要实现IActivity/IFragment或继承BaseActivity/BaseFragment")
         }
     }
 
@@ -76,7 +76,7 @@ object RxLifecycleUtil {
         if (activity is IActivity) {
             return RxLifecycleAndroid.bindActivity((activity as IActivity).getBehaviorSubject())
         } else {
-            throw NullPointerException("要使用该方法,需要实现IFragment.或继承BaseActivity")
+            throw NullPointerException("要使用该方法,需要实现IActivity.或继承BaseActivity")
         }
     }
 

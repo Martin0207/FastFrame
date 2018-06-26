@@ -24,7 +24,7 @@ object DownloadUtil {
     /**
      * 下载文件
      */
-    fun download(url: String, activity: Activity) {
+    fun download(url: String, activity: Activity): String {
         val dir = File(dirPath)
         if (!dir.exists()) {
             dir.mkdir()
@@ -43,6 +43,8 @@ object DownloadUtil {
                 }
 
         map[url] = disposable
+
+        return file.path
     }
 
     /**

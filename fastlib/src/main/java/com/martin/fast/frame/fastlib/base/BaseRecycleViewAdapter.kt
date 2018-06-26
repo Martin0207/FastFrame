@@ -4,7 +4,6 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.martin.fast.frame.fastlib.contract.interfacies.OnClickOfPositionListener
 
 /**
@@ -20,7 +19,7 @@ abstract class BaseRecycleViewAdapter<T, H : BaseRecycleViewAdapter.BaseViewHold
     /**
      * 点击事件监听
      */
-    var ofPositionListener: OnClickOfPositionListener? = null
+    var onClickOfPositionListener: OnClickOfPositionListener? = null
 
     fun getItem(position: Int) = if (data.size > position) data[position] else null
 
@@ -65,7 +64,7 @@ abstract class BaseRecycleViewAdapter<T, H : BaseRecycleViewAdapter.BaseViewHold
 
         init {
             item.setOnClickListener {
-                adapter.ofPositionListener?.onClick(adapterPosition)
+                adapter.onClickOfPositionListener?.onClick(adapterPosition)
             }
         }
 

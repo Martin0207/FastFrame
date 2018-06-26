@@ -1,8 +1,6 @@
 package com.martin.fast.frame.fastlib.util
 
 import android.app.Activity
-import com.martin.fast.frame.fastlib.base.BaseResponse
-import com.martin.fast.frame.fastlib.model.UploadModel
 import com.martin.fast.frame.fastlib.retrofit.NetUtil
 import com.orhanobut.logger.Logger
 import io.reactivex.Observable
