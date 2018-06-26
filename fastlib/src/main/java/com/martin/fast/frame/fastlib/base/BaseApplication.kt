@@ -9,26 +9,37 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.martin.fast.frame.fastlib.FastLib
 import com.martin.fast.frame.fastlib.contract.impl.ActivityLifecycleCallbackImpl
 import com.martin.fast.frame.fastlib.contract.impl.LogAdapterImpl
+import com.martin.fast.frame.fastlib.contract.impl.ModuleManagerImpl
+import com.martin.fast.frame.fastlib.contract.interfacies.IModuleManager
+import com.martin.fast.frame.fastlib.util.ManifestUtil
 import com.martin.fast.frame.fastlib.util.ToastUtil
 import com.orhanobut.logger.Logger
+import io.reactivex.Observable
 import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
+import kotlin.properties.Delegates
 
 /**
  * @author ：Martin
  * @date : 2018/6/6 20:29
  */
-abstract class BaseApplication : Application() {
+class BaseApplication : Application() {
+
+    lateinit var moduleManager: IModuleManager
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
 
         //这里做全局的Activity生命周期监听
         registerActivityLifecycleCallbacks(ActivityLifecycleCallbackImpl())
+
+        moduleManager = ModuleManagerImpl(this)
+        moduleManager.attachBaseContext(base!!)
     }
 
     override fun onCreate() {
         super.onCreate()
+        moduleManager.onCreate()
 
         //快速开发工具初始化
         FastLib.init(this)
@@ -68,4 +79,10 @@ abstract class BaseApplication : Application() {
         //路由器初始化
         ARouter.init(application)
     }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        moduleManager.onTerminate()
+    }
+
 }

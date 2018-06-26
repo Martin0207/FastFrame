@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.martin.fast.frame.module">
+
+    <application>
+        <meta-data
+            android:name="com.martin.fast.frame.module.ModuleManagerImpl"
+            android:value="module_manager" />
+
+        <activity android:name=".ModuleActivity" />
+    </application>
+
+</manifest>

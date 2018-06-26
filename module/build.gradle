@@ -1,4 +1,8 @@
-apply plugin: 'com.android.application'
+if (modularization.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 apply plugin: 'kotlin-android'
 
@@ -17,16 +21,17 @@ kapt {
 
 android {
     compileSdkVersion 27
+
     defaultConfig {
-        applicationId "com.martin.fast.frame.fastframe"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-
     }
+
     buildTypes {
         debug {
             buildConfigField("boolean", "modularization", modularization)
@@ -46,19 +51,27 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    resourcePrefix("module")
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (modularization.toBoolean()) {
+                manifest.srcFile 'src/main/modularization/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-
-    if (modularization.toBoolean()) {
-        implementation project(':fastlib')
-    } else {
-        implementation project(':module')
-    }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':fastlib')
 
     //编译引用 , 每个component都需要引用
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     kapt 'com.google.dagger:dagger-compiler:2.15'
     kapt 'com.alibaba:arouter-compiler:1.1.4'
 }
