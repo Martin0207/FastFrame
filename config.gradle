@@ -63,7 +63,11 @@ ext {
             "dagger-compiler"        : "com.google.dagger:dagger-compiler:2.15",
             //日志管理
             "logger"                 : "com.orhanobut:logger:2.2.0",
-            "timber"                 : "com.jakewharton.timber:timber:4.7.0"
+            "timber"                 : "com.jakewharton.timber:timber:4.7.0",
+
+            //扫描功能
+            "zxingTool"              : "com.mylhyl:zxingscanner:2.1.1",
+            "zxing"                  : "com.google.zxing:core:3.3.0"
     ]
 
 }

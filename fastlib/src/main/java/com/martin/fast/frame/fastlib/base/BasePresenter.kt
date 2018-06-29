@@ -10,8 +10,8 @@ import javax.inject.Inject
  * @author ：Martin
  * @date : 2018/6/7 20:28
  */
-abstract class BasePresenter<V : IView, M : IModel>
-constructor(var view: V?, var model: M?)
+abstract class BasePresenter<V : IView>
+constructor(var view: V?)
     : IPresenter {
 
     init {
@@ -19,9 +19,7 @@ constructor(var view: V?, var model: M?)
     }
 
     override fun onDestroy() {
-        model?.onDestroy()
         view = null
-        model = null
     }
 
 }

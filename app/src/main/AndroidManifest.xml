@@ -10,9 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
-            android:name="com.martin.fast.frame.fastframe.test.ModuleMgrImpl"
+            android:name="com.martin.fast.frame.fastframe.impl.ModuleMgrImpl"
             android:value="module_manager" />
 
         <provider
@@ -36,6 +35,8 @@
         <activity android:name=".ui.activity.DialogUseActivity" />
         <activity android:name=".ui.activity.TipDialogActivity" />
         <activity android:name=".ui.activity.RetrofitActivity" />
+        <activity android:name=".ui.activity.CustomMvpActivity" />
+        <activity android:name=".ui.activity.DemoMvpActivity"></activity>
     </application>
 
 </manifest>

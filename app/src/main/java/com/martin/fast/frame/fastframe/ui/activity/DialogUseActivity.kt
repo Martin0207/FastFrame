@@ -30,12 +30,12 @@ class DialogUseActivity : BaseActivity() {
     override fun layoutRes(): Int = R.layout.activity_dialog
 
     override fun init(saveInstanceState: Bundle?) {
-        setTitle("normal dialog")
+        title = "normal dialog"
         val items = arrayOf("aaa", "bbb", "ccc", "ddd")
 
         btn_normal.setOnClickListener {
             DialogUtil.showNormalDialog(getActivity(), "title", "msg is msg", "commit",
-                    QMUIDialogAction.ActionListener { dialog, index ->
+                    QMUIDialogAction.ActionListener { dialog, _ ->
                         ToastUtil.show("你点击了确定")
                         dialog.dismiss()
                     })

@@ -19,17 +19,11 @@ object CloseUtil {
      * @param closeables closeable
      */
     fun closeIO(vararg closeables: Closeable) {
-        if (closeables == null) {
-            return
-        }
         for (closeable in closeables) {
-            if (closeable != null) {
-                try {
-                    closeable.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-
+            try {
+                closeable.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
             }
         }
     }
@@ -40,14 +34,10 @@ object CloseUtil {
      * @param closeables closeable
      */
     fun closeIOQuietly(vararg closeables: Closeable) {
-        if (closeables == null) return
         for (closeable in closeables) {
-            if (closeable != null) {
-                try {
-                    closeable.close()
-                } catch (ignored: IOException) {
-                }
-
+            try {
+                closeable.close()
+            } catch (ignored: IOException) {
             }
         }
     }

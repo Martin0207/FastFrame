@@ -18,7 +18,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction
  */
 object DialogUtil {
 
-    var mDialog: Dialog? = null
+    private var mDialog: Dialog? = null
 
     /**
      *  展示普通的Dialog

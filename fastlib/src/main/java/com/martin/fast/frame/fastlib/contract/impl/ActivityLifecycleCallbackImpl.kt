@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
-import android.util.Log
 import com.martin.fast.frame.fastlib.R
 import com.martin.fast.frame.fastlib.contract.interfacies.IActivity
 import com.martin.fast.frame.fastlib.contract.interfacies.IRxLifecycleAble
@@ -71,7 +70,7 @@ class ActivityLifecycleCallbackImpl : Application.ActivityLifecycleCallbacks {
      * 如果需要该功能 , 则Activity需要实现IActivity接口,或继承框架内的BaseActivity/BaseMvpActivity
      * 并且,haveFragment方法返回true,默认为false
      */
-    fun registerFragmentLifecycleCallback(activity: Activity?) {
+    private fun registerFragmentLifecycleCallback(activity: Activity?) {
         if (activity is FragmentActivity && activity is IActivity && (activity as IActivity).haveFragment()) {
             (activity as FragmentActivity).supportFragmentManager.registerFragmentLifecycleCallbacks(FragmentLifecycleCallBackImpl(), true)
         }
@@ -80,7 +79,7 @@ class ActivityLifecycleCallbackImpl : Application.ActivityLifecycleCallbacks {
     /**
      * 根据Activity的实现结构,来获取BehaviorSubject , 以非侵入的方式实现RxJava的管理
      */
-    fun Activity.getBehaviorSubject(): BehaviorSubject<ActivityEvent>? {
+    private fun Activity.getBehaviorSubject(): BehaviorSubject<ActivityEvent>? {
         if (this is IRxLifecycleAble<*>) {
             return (this as IRxLifecycleAble<ActivityEvent>).getBehaviorSubject()
         }

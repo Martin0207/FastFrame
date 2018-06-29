@@ -6,6 +6,8 @@ import com.martin.fast.frame.fastframe.R
 import com.martin.fast.frame.fastframe.dagger.component.DaggerMainComponent
 import com.martin.fast.frame.fastframe.entity.UserEntity
 import com.martin.fast.frame.fastlib.base.BaseActivity
+import com.martin.fast.frame.fastlib.constant.RouterHub
+import com.qmuiteam.qmui.widget.QMUITopBar
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -20,11 +22,10 @@ class MainActivity : BaseActivity() {
 
         DaggerMainComponent.builder()
                 .build()
-                .inject(this)
 
         btn_router.setOnClickListener {
             ARouter.getInstance()
-                    .build("/main/ARouterActivity")
+                    .build(RouterHub.MODULE_ACTIVITY)
                     .navigation()
         }
 
@@ -39,6 +40,11 @@ class MainActivity : BaseActivity() {
         btn_retrofit.setOnClickListener {
             RetrofitActivity.start(getActivity())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        findViewById<QMUITopBar>(R.id.tb).removeAllLeftViews()
     }
 
 

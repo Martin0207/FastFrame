@@ -1,5 +1,6 @@
 package com.martin.fast.frame.fastlib
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter

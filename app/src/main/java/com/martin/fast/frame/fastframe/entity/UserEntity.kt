@@ -6,12 +6,9 @@ import javax.inject.Inject
  * @author ：Martin
  * @date : 2018/6/7 12:43
  */
-class UserEntity {
+class UserEntity @Inject constructor() {
 
     var name: String? = "name is martin"
-
-    @Inject
-    constructor()
 
     override fun toString(): String {
         return "UserEntity(name=$name)"
