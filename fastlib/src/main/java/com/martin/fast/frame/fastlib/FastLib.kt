@@ -5,6 +5,8 @@ import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.martin.fast.frame.fastlib.contract.impl.LogAdapterImpl
+import com.martin.fast.frame.fastlib.util.image.load.GlideEngine
+import com.martin.fast.frame.fastlib.util.image.load.ImageLoader
 import com.orhanobut.logger.Logger
 import timber.log.Timber
 import kotlin.properties.Delegates
@@ -33,6 +35,7 @@ object FastLib {
      */
     fun init(application: Application) {
         this.context = application
+        ImageLoader.imageLoader = GlideEngine()
     }
 
 }

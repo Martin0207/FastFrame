@@ -1,5 +1,6 @@
 package com.martin.fast.frame.fastlib.base
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -25,16 +26,17 @@ abstract class BaseMvpActivity<V : IView, P : BasePresenter<V>> : AppCompatActiv
     @JvmField
     protected var presenter: P? = null
 
+    @SuppressLint("BinaryOperationInTimber")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes())
-        presenter?.onCreate()
+        daggerInject()
         Timber.e("the opening activity is " + this::class.java.simpleName)
 
         if (useEventBus() && !EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
-        daggerInject()
+        presenter?.onCreate()
         init(savedInstanceState)
     }
 

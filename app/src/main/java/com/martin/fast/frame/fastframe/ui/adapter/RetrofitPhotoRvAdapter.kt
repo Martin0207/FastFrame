@@ -8,6 +8,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.martin.fast.frame.fastframe.R
 import com.martin.fast.frame.fastlib.base.BaseRecycleViewAdapter
+import com.martin.fast.frame.fastlib.util.image.load.ImageLoader
 
 /**
  * @author ：Martin
@@ -22,7 +23,8 @@ class RetrofitPhotoRvAdapter(context: Context)
     }
 
     override fun onBindViewHolder(holder: RetrofitPhotoRvAdapter.Holder, position: Int) {
-        Glide.with(context)
+        ImageLoader
+                .with(context)
                 .load(getItem(position)!!)
                 .into(holder.img!!)
     }

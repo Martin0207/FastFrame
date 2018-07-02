@@ -18,7 +18,7 @@ class DemoMvpActivity :
 
     override fun showDialog(msg: String) {
         DialogUtil.showNormalDialog(getActivity(), "title", msg, "commit",
-                QMUIDialogAction.ActionListener { dialog, index -> dialog?.dismiss() })
+                QMUIDialogAction.ActionListener { dialog, _ -> dialog?.dismiss() })
     }
 
     override fun layoutRes() = R.layout.activity_demo_mvp

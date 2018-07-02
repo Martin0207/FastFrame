@@ -17,6 +17,7 @@ import io.reactivex.Observable
 import io.reactivex.functions.BiConsumer
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_show_image.*
+import timber.log.Timber
 import java.util.concurrent.Callable
 
 class ShowImageActivity : BaseActivity() {
@@ -73,10 +74,11 @@ class ShowImageActivity : BaseActivity() {
                 }
                 .subscribe(Consumer {
                     vp.adapter = it
-                    if (vp.childCount > positionShow) {
+                    if (vp.adapter?.count!! > positionShow) {
                         vp.setCurrentItem(positionShow, false)
                     }
                 })
+
     }
 
 

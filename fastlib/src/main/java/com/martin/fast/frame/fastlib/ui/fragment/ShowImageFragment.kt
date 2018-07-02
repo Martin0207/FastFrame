@@ -2,11 +2,13 @@ package com.martin.fast.frame.fastlib.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import com.bumptech.glide.Glide
 import com.martin.fast.frame.fastlib.R
 import com.martin.fast.frame.fastlib.base.BaseFragment
 import com.martin.fast.frame.fastlib.constant.ConstantExtra
 import com.martin.fast.frame.fastlib.entity.ShowImageEntity
+import com.martin.fast.frame.fastlib.util.image.load.ImageLoader
 import it.sephiroth.android.library.imagezoom.ImageViewTouchBase
 import kotlinx.android.synthetic.main.fragment_show_image.*
 

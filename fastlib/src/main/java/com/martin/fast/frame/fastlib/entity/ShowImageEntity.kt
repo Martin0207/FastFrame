@@ -3,6 +3,7 @@ package com.martin.fast.frame.fastlib.entity
 import android.net.Uri
 import android.os.Parcel
 import android.os.Parcelable
+import com.martin.fast.frame.fastlib.util.image.load.ImageLoader
 
 /**
  * @author ：Martin
